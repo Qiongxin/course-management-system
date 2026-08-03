@@ -96,9 +96,9 @@ Demo accounts:
 
 | Role    | Email                                             | Password |
 | ------- | ------------------------------------------------- | -------- |
-| Admin   | [admin@example.com](mailto:admin@example.com)     | demo123  |
-| TA      | [ta@example.com](mailto:ta@example.com)           | demo123  |
-| Student | [student@example.com](mailto:student@example.com) | demo123  |
+| Admin   | admin@email.com     | password  |
+| TA      | mike.smith@email.com           | password  |
+| Student | john.doe@testmail.com | john  |
 
 ## License
 
