@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from './authContext';
 import Notice from "./noticeBox.jsx";
 import useConfirm from "../utils/useConfirm.js";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SlotApp = () => {
   const { authFetch } = useAuth();
