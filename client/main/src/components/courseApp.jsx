@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from './authContext';
 import Notice from "./noticeBox.jsx";
 import useConfirm from "../utils/useConfirm.js";
@@ -18,11 +18,7 @@ const CourseApp = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getCourses();
-  }, []);
-
-  const getCourses = () => {
+  const getCourses = useCallback(() => {
     authFetch('/courses')
       .then(res => res.json())
       .then(data => {
@@ -31,7 +27,12 @@ const CourseApp = () => {
       .catch(error => {
         console.error('Failed to load the course list:', error);
       });
-  };
+    }, [authFetch]);
+
+  useEffect(() => {
+    getCourses();
+  }, [getCourses]);
+
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;

@@ -31,9 +31,8 @@ const SlotApp = () => {
   const location = useLocation();
   const [signUp, setSignUp] = useState(null);
   const [signUpID, setSignUpID] = useState('');
-  const [editingSlot, setEditingSlot] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const navigate = useNavigate();
+
 
   const getSlots = useCallback(async () => {
     if (!signUpID) return;
@@ -267,7 +266,6 @@ const SlotApp = () => {
 
   const setupEditForm = (slot) => {
     setSelectedSlotID(slot.slotID);
-    setEditingSlot(slot);
     setSlotEditForm({
       start: Number(slot.start),
       slotDuration: slot.slotDuration || '',
@@ -276,10 +274,6 @@ const SlotApp = () => {
     setShowEditModal(true);
   };
 
-  const formatDate = (timestamp) => {
-    if (!timestamp) return '';
-    return new Date(Number(timestamp)).toLocaleString();
-  };
 
   const formatMembers = (members) => {
     if (!members || members.length === 0) return '';
