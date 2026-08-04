@@ -4,7 +4,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const { v4: uuid } = require("uuid");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
@@ -27,10 +27,16 @@ mongoose
     console.error(err);
   });
 
-// app.use(express.static(path.join(__dirname, '../client/lab4/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '200kb' }));
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://course-management-system-ruby-ten.vercel.app/"
+  ],
+  credentials: true
+}));
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];

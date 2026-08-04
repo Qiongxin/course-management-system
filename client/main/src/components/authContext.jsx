@@ -97,7 +97,6 @@ const AuthProvider = ({ children }) => {
 
   const authFetch = async (url, options = {}) => {
     const token = localStorage.getItem('token');
-    
     const config = {
       ...options,
       headers: {
@@ -106,14 +105,12 @@ const AuthProvider = ({ children }) => {
         'Authorization': `Bearer ${token}`
       }
     };
-
-    const response = await fetch(url, config);
-    
+    const API_URL = process.env.REACT_APP_API_URL;
+    const response = await fetch(`${API_URL}${url}`, config);
     if (response.status === 401) {
       logout();
       throw new Error('Login expired, please login again');
     }
-
     return response;
   };
 
