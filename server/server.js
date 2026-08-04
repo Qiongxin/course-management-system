@@ -10,6 +10,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 require("dotenv").config();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const JWT_SECRET = 'your-super-secret-key-change-in-production';
 
@@ -33,7 +34,7 @@ app.use(express.json({ limit: '200kb' }));
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://course-management-system-ruby-ten.vercel.app/"
+    "https://course-management-system-ruby-ten.vercel.app"
   ],
   credentials: true
 }));
