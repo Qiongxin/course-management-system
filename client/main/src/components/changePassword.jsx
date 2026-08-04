@@ -22,7 +22,7 @@ const ChangePassword = () => {
       return setNoticeMsg("Passwords do not match");
     }
 
-    const res = await fetch("/auth/change-password", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/change-password`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, newPassword: newPass }),

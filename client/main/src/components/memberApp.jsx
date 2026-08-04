@@ -180,7 +180,7 @@ const MemberApp = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/addMemberCSV", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/addMemberCSV`, {
         method: "POST",
         headers: {
           Authorization: token ? `Bearer ${token}` : undefined

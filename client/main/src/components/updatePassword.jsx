@@ -16,7 +16,7 @@ const UpdatePassword = () => {
       return setNoticeMsg("New passwords do not match");
     }
 
-    const res = await fetch("/auth/update-password", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/update-password`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

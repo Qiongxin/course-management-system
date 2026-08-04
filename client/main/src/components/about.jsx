@@ -19,7 +19,7 @@ const About = () => {
   const handleSearch = async () => {
 
     try {
-      const res = await fetch(`/public/signupSheets?course=${query}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/public/signupSheets?course=${query}`);
       const data = await res.json();
 
       if (Array.isArray(data)) {
@@ -40,7 +40,7 @@ const About = () => {
     }
 
     try {
-      const res = await fetch(`/public/slots/${signupID}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/public/slots/${signupID}`);
       const data = await res.json();
       if (data.success && Array.isArray(data.slots)) {
         setExpanded(prev => ({
